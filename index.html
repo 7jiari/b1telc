@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Wanderung – Lektion 6</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+Arabic:wght@300;400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Noto+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root{
   --bg:#0c0f12;--bg2:#131820;--bg3:#1a2030;
@@ -72,74 +72,20 @@ body{
   padding:3px 10px;border-radius:18px;letter-spacing:.5px;
 }
 
-/* ═══ AUDIO PLAYER ═══ */
+/* ═══ AUDIO PLAYER - IMPROVED ═══ */
 .player-wrap{max-width:680px;margin:24px auto 0;position:relative;z-index:1}
 .player{
   background:var(--card);border:1px solid var(--border);
   border-radius:16px;padding:18px 20px 16px;box-shadow:var(--shadow);
 }
-.player-top{display:flex;align-items:center;gap:14px}
-.play-btn{
-  flex-shrink:0;width:48px;height:48px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:transform .15s,box-shadow .2s;
-  box-shadow:0 4px 18px rgba(232,160,76,.3);
+.audio-iframe{
+  width:100%;height:80px;border:none;border-radius:12px;
+  background:var(--bg3);margin-bottom:12px;
 }
-.play-btn:hover{transform:scale(1.07);box-shadow:0 6px 24px rgba(232,160,76,.4)}
-.play-btn svg{width:20px;height:20px;fill:#fff}
-.player-info{flex:1;min-width:0}
-.player-title{font-size:.82rem;font-weight:600;color:var(--text)}
-.player-sub{font-size:.68rem;color:var(--text-dim);margin-top:2px}
-.player-time{font-size:.72rem;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
-
-/* progress track */
-.track-wrap{margin-top:14px;position:relative;height:5px;cursor:pointer}
-.track-bg{position:absolute;inset:0;background:var(--bg3);border-radius:3px}
-.track-fill{position:absolute;top:0;left:0;bottom:0;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;transition:width .1s linear}
-.track-thumb{
-  position:absolute;top:50%;left:0%;transform:translate(-50%,-50%);
-  width:13px;height:13px;border-radius:50%;
-  background:var(--accent);box-shadow:0 0 8px rgba(232,160,76,.5);
-  transition:left .1s linear;opacity:0;
+.player-note{
+  font-size:.72rem;color:var(--text-dim);text-align:center;
+  margin-top:8px;font-family:'Noto Sans Arabic',sans-serif;
 }
-.track-wrap:hover .track-thumb{opacity:1}
-
-/* bottom controls */
-.player-bot{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
-.speed-row{display:flex;gap:4px}
-.sp-btn{
-  background:var(--bg3);border:1px solid var(--border);
-  color:var(--text-dim);font-size:.64rem;font-weight:600;
-  padding:3px 8px;border-radius:7px;cursor:pointer;
-  font-family:inherit;transition:all .15s;
-}
-.sp-btn:hover,.sp-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-.loop-btn{
-  background:var(--bg3);border:1px solid var(--border);
-  color:var(--text-dim);font-size:.64rem;font-weight:600;
-  padding:3px 9px;border-radius:7px;cursor:pointer;
-  font-family:inherit;transition:all .15s;
-}
-.loop-btn:hover,.loop-btn.on{background:rgba(92,191,138,.2);color:var(--green);border-color:var(--green)}
-
-/* fallback download banner */
-.dl-banner{
-  margin-top:12px;padding:10px 14px;
-  background:rgba(232,160,76,.08);border:1px solid rgba(232,160,76,.2);
-  border-radius:10px;display:none;
-  text-align:center;
-}
-.dl-banner p{font-size:.72rem;color:var(--accent);margin-bottom:6px}
-.dl-banner a{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--accent);color:#fff;
-  font-size:.7rem;font-weight:600;
-  padding:5px 14px;border-radius:8px;
-  text-decoration:none;transition:background .15s;
-}
-.dl-banner a:hover{background:var(--accent2)}
 
 /* ═══ NAV TABS ═══ */
 .nav{
@@ -178,7 +124,7 @@ body{
 .section.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══ CONVERSATION ═══ */
+/* ═══ CONVERSATION - IMPROVED ARABIC ═══ */
 .conv-card{
   display:flex;gap:12px;align-items:flex-start;
   background:var(--card);border:1px solid var(--border);
@@ -204,34 +150,40 @@ body{
 .conv-card .de{font-size:.9rem;font-weight:400;color:var(--text);line-height:1.55}
 .conv-card .ar{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.97rem;color:var(--blue);
-  direction:rtl;text-align:right;line-height:1.7;
+  font-size:1.15rem;
+  font-weight:500;
+  color:var(--blue);
+  direction:rtl;text-align:right;line-height:1.9;
   max-height:0;overflow:hidden;opacity:0;
   transition:max-height .32s ease,opacity .28s ease,padding .28s,margin .28s,border-color .28s;
   border-top:1px solid transparent;
 }
-.conv-card.open .ar{max-height:180px;opacity:1;margin-top:8px;padding-top:8px;border-top-color:var(--border)}
+.conv-card.open .ar{max-height:220px;opacity:1;margin-top:10px;padding-top:10px;border-top-color:var(--border)}
 .conv-card .hint{
-  font-size:.62rem;color:var(--accent);margin-top:5px;
+  font-size:.68rem;
+  font-family:'Noto Sans Arabic',sans-serif;
+  color:var(--accent);margin-top:5px;
   opacity:.55;display:flex;align-items:center;gap:3px;
   transition:opacity .2s,max-height .25s;
 }
 .conv-card.open .hint{opacity:0;max-height:0;overflow:hidden;margin:0}
 
-/* ═══ VOCAB ═══ */
+/* ═══ VOCAB - IMPROVED ARABIC ═══ */
 .vf-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .vf-btn{
   background:var(--bg3);border:1px solid var(--border);
-  color:var(--text-dim);font-size:.7rem;font-weight:500;
-  padding:5px 13px;border-radius:18px;cursor:pointer;
-  font-family:inherit;transition:all .18s;
+  color:var(--text-dim);
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.85rem;font-weight:500;
+  padding:6px 15px;border-radius:18px;cursor:pointer;
+  transition:all .18s;
 }
 .vf-btn:hover,.vf-btn.on{background:rgba(91,163,217,.15);border-color:rgba(91,163,217,.3);color:var(--blue)}
 .v-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:8px}
 .v-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:12px;cursor:pointer;
-  min-height:88px;position:relative;
+  min-height:100px;position:relative;
   transition:border-color .2s;perspective:800px;
 }
 .v-card:hover{border-color:rgba(91,163,217,.25)}
@@ -244,17 +196,154 @@ body{
 .v-card .v-back{transform:rotateY(180deg)}
 .v-card.flipped .v-front{transform:rotateY(180deg)}
 .v-card.flipped .v-back{transform:rotateY(0)}
-.v-card .v-cat{font-size:.58rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-bottom:5px;color:var(--accent)}
+.v-card .v-cat{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.7rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-bottom:5px;color:var(--accent);
+}
 .v-card .v-word{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;color:var(--text)}
-.v-card .v-hint{font-size:.6rem;color:var(--text-dim);margin-top:auto;padding-top:5px}
+.v-card .v-hint{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.68rem;color:var(--text-dim);margin-top:auto;padding-top:5px;
+}
 .v-card .v-back .v-cat{color:var(--green)}
-.v-card .v-back .v-word{font-family:'Noto Sans Arabic',sans-serif;color:var(--blue);direction:rtl;text-align:right;font-size:1rem}
+.v-card .v-back .v-word{
+  font-family:'Noto Sans Arabic',sans-serif;
+  color:var(--blue);
+  direction:rtl;
+  text-align:right;
+  font-size:1.2rem;
+  font-weight:600;
+  line-height:1.8;
+}
 
-/* ═══ QUIZ ═══ */
+/* ═══ FALLING WORDS GAME ═══ */
+.game-container{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
+  margin-bottom:20px;
+}
+.game-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:20px;
+  padding-bottom:15px;
+  border-bottom:1px solid var(--border);
+}
+.game-title{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:1.3rem;
+  font-weight:600;
+  color:var(--text);
+}
+.game-stats{
+  display:flex;
+  gap:20px;
+  font-family:'Noto Sans Arabic',sans-serif;
+}
+.stat{
+  text-align:center;
+}
+.stat-label{
+  font-size:.7rem;
+  color:var(--text-dim);
+  margin-bottom:3px;
+}
+.stat-value{
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--accent);
+}
+.game-canvas-wrap{
+  position:relative;
+  background:linear-gradient(180deg,var(--bg),var(--bg2));
+  border:2px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  height:450px;
+}
+#gameCanvas{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.game-controls{
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+  justify-content:center;
+}
+.game-btn{
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;
+  border:none;
+  padding:10px 24px;
+  border-radius:12px;
+  font-size:.85rem;
+  font-weight:600;
+  font-family:'Noto Sans Arabic',sans-serif;
+  cursor:pointer;
+  transition:transform .15s,box-shadow .2s;
+  box-shadow:0 4px 16px rgba(232,160,76,.25);
+}
+.game-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(232,160,76,.35);
+}
+.game-btn.secondary{
+  background:var(--bg3);
+  color:var(--text);
+  box-shadow:none;
+}
+.game-btn.secondary:hover{
+  background:var(--card-hover);
+}
+.game-input-wrap{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+}
+.game-input{
+  flex:1;
+  background:var(--bg3);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:12px 16px;
+  border-radius:10px;
+  font-size:.95rem;
+  font-family:'Noto Sans Arabic',sans-serif;
+  direction:rtl;
+  text-align:right;
+}
+.game-input:focus{
+  outline:none;
+  border-color:var(--blue);
+  background:var(--card);
+}
+.game-submit{
+  background:var(--blue);
+  color:#fff;
+  border:none;
+  padding:0 24px;
+  border-radius:10px;
+  font-size:.85rem;
+  font-weight:600;
+  font-family:'Noto Sans Arabic',sans-serif;
+  cursor:pointer;
+  transition:background .2s;
+}
+.game-submit:hover{
+  background:#4a8fbd;
+}
+
+/* ═══ QUIZ - IMPROVED ARABIC ═══ */
 .quiz-prog{display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .quiz-prog .trk{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
 .quiz-prog .fil{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
-.quiz-prog .cnt{font-size:.7rem;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.quiz-prog .cnt{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.85rem;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
 .quiz-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:18px;padding:28px 24px 24px;box-shadow:var(--shadow);
@@ -262,18 +351,37 @@ body{
 .q-tag{
   display:inline-flex;align-items:center;gap:5px;
   background:rgba(91,163,217,.1);border:1px solid rgba(91,163,217,.2);
-  color:var(--blue);font-size:.65rem;font-weight:600;
-  padding:3px 10px;border-radius:12px;margin-bottom:16px;letter-spacing:.4px;
+  color:var(--blue);
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.8rem;font-weight:600;
+  padding:4px 12px;border-radius:12px;margin-bottom:16px;letter-spacing:.4px;
 }
-.q-text{font-size:.95rem;color:var(--text);line-height:1.6;font-weight:400;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.q-text.rtl{font-family:'Noto Sans Arabic',sans-serif;direction:rtl;text-align:right;color:var(--blue);font-size:1.08rem}
+.q-text{
+  font-size:1.05rem;
+  color:var(--text);
+  line-height:1.7;
+  font-weight:400;
+  margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--border);
+}
+.q-text.rtl{
+  font-family:'Noto Sans Arabic',sans-serif;
+  direction:rtl;
+  text-align:right;
+  color:var(--blue);
+  font-size:1.25rem;
+  font-weight:500;
+  line-height:2;
+}
 .q-opts{display:flex;flex-direction:column;gap:7px}
 .q-opt{
   background:var(--bg3);border:1px solid var(--border);
   border-radius:10px;padding:12px 15px;
-  color:var(--text-mid);font-size:.84rem;
-  cursor:pointer;font-family:inherit;text-align:left;
+  color:var(--text-mid);font-size:.95rem;
+  cursor:pointer;text-align:left;
   transition:all .18s;display:flex;align-items:center;gap:10px;
+  font-family:'Noto Sans Arabic',sans-serif;
 }
 .q-opt .on{
   flex-shrink:0;width:24px;height:24px;border-radius:6px;
@@ -287,13 +395,21 @@ body{
 .q-opt.wrong{background:rgba(224,92,92,.1);border-color:var(--red);color:var(--red)}
 .q-opt.wrong .on{background:var(--red);color:#fff;border-color:var(--red)}
 .q-opt:disabled{cursor:default}
-.q-fb{margin-top:16px;font-size:.8rem;color:var(--text-dim);min-height:20px;padding-left:34px}
+.q-fb{
+  margin-top:16px;
+  font-size:.9rem;
+  font-family:'Noto Sans Arabic',sans-serif;
+  color:var(--text-dim);
+  min-height:20px;
+  padding-left:34px;
+}
 .q-fb.ok{color:var(--green)}.q-fb.no{color:var(--red)}
 .q-next{
   margin-top:18px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;border:none;padding:9px 22px;border-radius:20px;
-  font-size:.76rem;font-weight:600;cursor:pointer;font-family:inherit;
+  color:#fff;border:none;padding:10px 24px;border-radius:20px;
+  font-size:.85rem;font-weight:600;cursor:pointer;
+  font-family:'Noto Sans Arabic',sans-serif;
   display:none;transition:transform .15s;
   box-shadow:0 4px 16px rgba(232,160,76,.25);
 }
@@ -309,16 +425,20 @@ body{
 }
 .score-ring::before{content:'';position:absolute;width:100px;height:100px;border-radius:50%;background:var(--card)}
 .score-ring .sv{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--text)}
-.score-box .ss{color:var(--text-dim);font-size:.76rem;margin-bottom:24px}
+.score-box .ss{
+  font-family:'Noto Sans Arabic',sans-serif;
+  color:var(--text-dim);font-size:.9rem;margin-bottom:24px;
+}
 .score-box .rst{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;border:none;padding:9px 28px;border-radius:22px;
-  font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
+  color:#fff;border:none;padding:10px 30px;border-radius:22px;
+  font-size:.85rem;font-weight:600;cursor:pointer;
+  font-family:'Noto Sans Arabic',sans-serif;
   box-shadow:0 4px 16px rgba(232,160,76,.25);transition:transform .15s;
 }
 .score-box .rst:hover{transform:translateY(-1px)}
 
-/* ═══ TIPS ═══ */
+/* ═══ TIPS - IMPROVED ARABIC ═══ */
 .tip-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:var(--radius);padding:18px 20px;margin-bottom:9px;
@@ -331,16 +451,22 @@ body{
   background:rgba(91,163,217,.1);
   display:flex;align-items:center;justify-content:center;font-size:14px;
 }
-.tip-title{font-family:'Cormorant Garamond',serif;font-size:1.02rem;font-weight:600;color:var(--text)}
-.tip-title span{color:var(--text-dim);font-weight:300;font-size:.82rem}
-.tip-card p{font-size:.8rem;color:var(--text-mid);line-height:1.7}
+.tip-title{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:1.1rem;font-weight:600;color:var(--text);
+}
+.tip-title span{color:var(--text-dim);font-weight:400;font-size:.9rem}
+.tip-card p{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.95rem;color:var(--text-mid);line-height:1.9;
+}
 .tip-card .ar-eg{
-  margin-top:9px;padding:7px 11px 7px 13px;
-  background:rgba(91,163,217,.07);border-left:3px solid var(--blue);
-  border-radius:0 7px 7px 0;
+  margin-top:12px;padding:10px 15px;
+  background:rgba(91,163,217,.07);border-right:3px solid var(--blue);
+  border-radius:7px 0 0 7px;
   font-family:'Noto Sans Arabic',sans-serif;
   direction:rtl;text-align:right;
-  color:var(--blue);font-size:.88rem;line-height:1.6;
+  color:var(--blue);font-size:1.05rem;line-height:1.9;font-weight:500;
 }
 
 /* ═══ RESPONSIVE ═══ */
@@ -351,6 +477,7 @@ body{
   .nav-btn .nav-icon{font-size:.85rem}
   .v-grid{grid-template-columns:1fr 1fr}
   .quiz-card{padding:20px 16px 18px}
+  .game-canvas-wrap{height:350px}
 }
 </style>
 </head>
@@ -366,38 +493,11 @@ body{
     <span>Kosten</span><span>Kleidung</span><span>Aufgaben</span>
   </div>
 
-  <!-- AUDIO PLAYER -->
+  <!-- AUDIO PLAYER - GOOGLE DRIVE EMBED -->
   <div class="player-wrap">
     <div class="player">
-      <div class="player-top">
-        <button class="play-btn" id="playBtn" onclick="togglePlay()">
-          <svg id="playIcon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="player-info">
-          <div class="player-title">Wanderung – Gespräch 6</div>
-          <div class="player-sub" id="playerSub">اضغط ▶ للاستماع</div>
-        </div>
-        <div class="player-time"><span id="curTime">0:00</span> / <span id="durTime">0:00</span></div>
-      </div>
-      <div class="track-wrap" id="trackWrap" onclick="seekAudio(event)">
-        <div class="track-bg"></div>
-        <div class="track-fill" id="trackFill"></div>
-        <div class="track-thumb" id="trackThumb"></div>
-      </div>
-      <div class="player-bot">
-        <div class="speed-row">
-          <button class="sp-btn" onclick="setSpeed(0.75)">0.75×</button>
-          <button class="sp-btn on" onclick="setSpeed(1)">1×</button>
-          <button class="sp-btn" onclick="setSpeed(1.25)">1.25×</button>
-          <button class="sp-btn" onclick="setSpeed(1.5)">1.5×</button>
-        </div>
-        <button class="loop-btn" id="loopBtn" onclick="toggleLoop()">↻ تكرار</button>
-      </div>
-      <!-- fallback banner shown if audio fails -->
-      <div class="dl-banner" id="dlBanner">
-        <p>لم يتمكن المتصفح من تحميل الصوت تلقائيًا.<br/>اضغط الزر أدناه لفتح الملف في Google Drive</p>
-        <a href="https://drive.google.com/file/d/1XAOtSTX1Vg6TKEDMIbFCuWZCc7fCHiru/view" target="_blank">🎵 افتح الصوت في Google Drive</a>
-      </div>
+      <iframe class="audio-iframe" src="https://drive.google.com/file/d/1XAOtSTX1Vg6TKEDMIbFCuWZCc7fCHiru/preview" allow="autoplay"></iframe>
+      <div class="player-note">🎧 استمع للحوار الكامل أعلاه</div>
     </div>
   </div>
 </div>
@@ -409,6 +509,9 @@ body{
   </button>
   <button class="nav-btn" onclick="switchTab('vocab',this)">
     <span class="nav-icon">📖</span> المفردات
+  </button>
+  <button class="nav-btn" onclick="switchTab('game',this)">
+    <span class="nav-icon">🎮</span> لعبة
   </button>
   <button class="nav-btn" onclick="switchTab('quiz',this)">
     <span class="nav-icon">🧠</span> اختبار
@@ -422,72 +525,14 @@ body{
 <div class="main">
   <div id="conv" class="section active"></div>
   <div id="vocab" class="section"></div>
+  <div id="game" class="section"></div>
   <div id="quiz" class="section"></div>
   <div id="tips" class="section"></div>
 </div>
 
 <script>
 // ═══════════════════════════════════════════════
-// AUDIO
-// ═══════════════════════════════════════════════
-const DRIVE_ID = '1XAOtSTX1Vg6TKEDMIbFCuWZCc7fCHiru';
-const AUDIO_URL = 'https://drive.google.com/uc?export=download&id=' + DRIVE_ID;
-
-let audio = new Audio();
-audio.src = AUDIO_URL;
-let looping = false;
-
-audio.addEventListener('loadedmetadata', ()=>{
-  document.getElementById('durTime').textContent = fmt(audio.duration);
-});
-audio.addEventListener('timeupdate', ()=>{
-  document.getElementById('curTime').textContent = fmt(audio.currentTime);
-  if(audio.duration){
-    const p = audio.currentTime / audio.duration * 100;
-    document.getElementById('trackFill').style.width = p + '%';
-    document.getElementById('trackThumb').style.left = p + '%';
-  }
-});
-audio.addEventListener('ended', ()=>{
-  if(looping){ audio.currentTime=0; audio.play(); }
-  else setPlayIcon(false);
-});
-audio.addEventListener('error', ()=>{
-  document.getElementById('dlBanner').style.display = 'block';
-  document.getElementById('playerSub').textContent = '⚠️ الصوت لم يتحمل';
-  document.getElementById('playerSub').style.color = 'var(--red)';
-});
-
-function fmt(s){
-  if(!s||isNaN(s)) return '0:00';
-  const m=Math.floor(s/60), sec=Math.floor(s%60);
-  return m+':'+(sec<10?'0':'')+sec;
-}
-function setPlayIcon(on){
-  document.getElementById('playIcon').innerHTML = on
-    ? '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>'
-    : '<path d="M8 5v14l11-7z"/>';
-}
-function togglePlay(){
-  if(audio.paused){ audio.play(); setPlayIcon(true); }
-  else { audio.pause(); setPlayIcon(false); }
-}
-function seekAudio(e){
-  const r = document.getElementById('trackWrap').getBoundingClientRect();
-  const p = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
-  if(audio.duration) audio.currentTime = p * audio.duration;
-}
-function setSpeed(v){
-  audio.playbackRate = v;
-  document.querySelectorAll('.sp-btn').forEach(b=>b.classList.toggle('on', parseFloat(b.textContent)===v));
-}
-function toggleLoop(){
-  looping = !looping;
-  document.getElementById('loopBtn').classList.toggle('on', looping);
-}
-
-// ═══════════════════════════════════════════════
-// DATA — correct Arabic from uploaded document
+// DATA
 // ═══════════════════════════════════════════════
 const conv = [
   {s:'A', de:"Hallo Abdelkhalik, wie geht's?",                                  ar:'مرحبًا عبد الخالق، كيف حالك؟'},
@@ -601,6 +646,179 @@ function renderVocab(){
 function setVF(c){ vFilter=c; renderVocab(); }
 
 // ═══════════════════════════════════════════════
+// FALLING WORDS GAME
+// ═══════════════════════════════════════════════
+let gameActive = false;
+let gameScore = 0;
+let gameLives = 3;
+let fallingWords = [];
+let gameCanvas, gameCtx;
+let gameAnimFrame;
+
+function initGame(){
+  const gameHTML = `
+    <div class="game-container">
+      <div class="game-header">
+        <div class="game-title">🎮 لعبة الكلمات الساقطة</div>
+        <div class="game-stats">
+          <div class="stat">
+            <div class="stat-label">النقاط</div>
+            <div class="stat-value" id="gameScore">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">الأرواح</div>
+            <div class="stat-value" id="gameLives">3</div>
+          </div>
+        </div>
+      </div>
+      <div class="game-canvas-wrap">
+        <canvas id="gameCanvas"></canvas>
+      </div>
+      <div class="game-input-wrap">
+        <input type="text" class="game-input" id="gameInput" placeholder="اكتب الترجمة هنا..." disabled>
+        <button class="game-submit" id="gameSubmit" onclick="checkAnswer()" disabled>إرسال</button>
+      </div>
+      <div class="game-controls">
+        <button class="game-btn" id="startBtn" onclick="startGame()">▶ ابدأ اللعبة</button>
+        <button class="game-btn secondary" onclick="stopGame()">⏸ إيقاف</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('game').innerHTML = gameHTML;
+  
+  gameCanvas = document.getElementById('gameCanvas');
+  gameCtx = gameCanvas.getContext('2d');
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+}
+
+function resizeCanvas(){
+  const wrap = document.querySelector('.game-canvas-wrap');
+  gameCanvas.width = wrap.clientWidth;
+  gameCanvas.height = wrap.clientHeight;
+}
+
+function startGame(){
+  gameActive = true;
+  gameScore = 0;
+  gameLives = 3;
+  fallingWords = [];
+  updateStats();
+  document.getElementById('gameInput').disabled = false;
+  document.getElementById('gameSubmit').disabled = false;
+  document.getElementById('gameInput').value = '';
+  document.getElementById('startBtn').textContent = '▶ اللعبة جارية...';
+  document.getElementById('startBtn').disabled = true;
+  spawnWord();
+  gameLoop();
+}
+
+function stopGame(){
+  gameActive = false;
+  if(gameAnimFrame) cancelAnimationFrame(gameAnimFrame);
+  document.getElementById('gameInput').disabled = true;
+  document.getElementById('gameSubmit').disabled = true;
+  document.getElementById('startBtn').textContent = '▶ ابدأ اللعبة';
+  document.getElementById('startBtn').disabled = false;
+}
+
+function updateStats(){
+  document.getElementById('gameScore').textContent = gameScore;
+  document.getElementById('gameLives').textContent = gameLives;
+}
+
+function spawnWord(){
+  if(!gameActive) return;
+  const word = vocab[Math.floor(Math.random() * vocab.length)];
+  fallingWords.push({
+    de: word.de,
+    ar: word.ar,
+    x: Math.random() * (gameCanvas.width - 150) + 50,
+    y: -30,
+    speed: 0.8 + Math.random() * 0.5
+  });
+  setTimeout(spawnWord, 3000 - Math.min(gameScore * 50, 1500));
+}
+
+function gameLoop(){
+  if(!gameActive) return;
+  
+  gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  
+  // Draw falling words
+  gameCtx.font = '22px "Cormorant Garamond"';
+  gameCtx.textAlign = 'center';
+  
+  for(let i = fallingWords.length - 1; i >= 0; i--){
+    const word = fallingWords[i];
+    word.y += word.speed;
+    
+    // Draw word
+    gameCtx.fillStyle = '#5ba3d9';
+    gameCtx.fillText(word.de, word.x, word.y);
+    
+    // Check if word reached bottom
+    if(word.y > gameCanvas.height){
+      fallingWords.splice(i, 1);
+      gameLives--;
+      updateStats();
+      
+      if(gameLives <= 0){
+        endGame();
+        return;
+      }
+    }
+  }
+  
+  gameAnimFrame = requestAnimationFrame(gameLoop);
+}
+
+function checkAnswer(){
+  const input = document.getElementById('gameInput').value.trim();
+  if(!input) return;
+  
+  for(let i = 0; i < fallingWords.length; i++){
+    if(fallingWords[i].ar === input || fallingWords[i].de.toLowerCase() === input.toLowerCase()){
+      fallingWords.splice(i, 1);
+      gameScore += 10;
+      updateStats();
+      document.getElementById('gameInput').value = '';
+      return;
+    }
+  }
+  
+  // Wrong answer
+  document.getElementById('gameInput').value = '';
+}
+
+function endGame(){
+  stopGame();
+  gameCtx.fillStyle = 'rgba(12, 15, 18, 0.9)';
+  gameCtx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+  
+  gameCtx.fillStyle = '#e8a04c';
+  gameCtx.font = '36px "Noto Sans Arabic"';
+  gameCtx.textAlign = 'center';
+  gameCtx.fillText('انتهت اللعبة!', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
+  
+  gameCtx.fillStyle = '#a3adb8';
+  gameCtx.font = '24px "Noto Sans Arabic"';
+  gameCtx.fillText(`نقاطك: ${gameScore}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
+}
+
+// Allow Enter key to submit
+document.addEventListener('DOMContentLoaded', ()=>{
+  setTimeout(()=>{
+    const input = document.getElementById('gameInput');
+    if(input){
+      input.addEventListener('keypress', (e)=>{
+        if(e.key === 'Enter') checkAnswer();
+      });
+    }
+  }, 100);
+});
+
+// ═══════════════════════════════════════════════
 // QUIZ
 // ═══════════════════════════════════════════════
 let qList=[],qIdx=0,qScore=0;
@@ -698,6 +916,7 @@ function switchTab(id,btn){
   btn.classList.add('active');
   if(id==='conv') renderConv();
   else if(id==='vocab') renderVocab();
+  else if(id==='game') initGame();
   else if(id==='quiz') renderQuiz();
   else if(id==='tips') renderTips();
 }
