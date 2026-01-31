@@ -72,7 +72,7 @@ body{
   padding:3px 10px;border-radius:18px;letter-spacing:.5px;
 }
 
-/* ═══ AUDIO PLAYER - IMPROVED ═══ */
+/* ═══ AUDIO PLAYER ═══ */
 .player-wrap{max-width:680px;margin:24px auto 0;position:relative;z-index:1}
 .player{
   background:var(--card);border:1px solid var(--border);
@@ -83,33 +83,40 @@ body{
   background:var(--bg3);margin-bottom:12px;
 }
 .player-note{
-  font-size:.72rem;color:var(--text-dim);text-align:center;
-  margin-top:8px;font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.85rem;
+  font-family:'Noto Sans Arabic',sans-serif;
+  color:var(--text-dim);text-align:center;
+  margin-top:8px;
 }
 
-/* ═══ NAV TABS ═══ */
+/* ═══ NAV TABS - IMPROVED ═══ */
 .nav{
-  display:flex;justify-content:center;gap:8px;
+  display:flex;justify-content:center;gap:10px;
   padding:24px 16px 18px;
   position:sticky;top:0;z-index:50;
   background:var(--bg);
+  flex-wrap:wrap;
 }
 .nav-btn{
   background:var(--bg3);
   border:1.5px solid rgba(255,255,255,.1);
   color:var(--text-mid);
-  font-family:inherit;font-size:.82rem;font-weight:600;
-  padding:10px 20px;border-radius:12px;
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:1rem;
+  font-weight:600;
+  padding:12px 22px;
+  border-radius:12px;
   cursor:pointer;
   transition:all .2s;
-  display:flex;align-items:center;gap:7px;
+  display:flex;align-items:center;gap:8px;
   letter-spacing:.3px;
 }
-.nav-btn .nav-icon{font-size:1rem;line-height:1}
+.nav-btn .nav-icon{font-size:1.2rem;line-height:1}
 .nav-btn:hover{
   background:var(--card-hover);
   border-color:rgba(255,255,255,.2);
   color:#fff;
+  transform:translateY(-2px);
 }
 .nav-btn.active{
   background:linear-gradient(135deg,rgba(91,163,217,.2),rgba(232,160,76,.12));
@@ -124,7 +131,7 @@ body{
 .section.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══ CONVERSATION - IMPROVED ARABIC ═══ */
+/* ═══ CONVERSATION ═══ */
 .conv-card{
   display:flex;gap:12px;align-items:flex-start;
   background:var(--card);border:1px solid var(--border);
@@ -160,7 +167,7 @@ body{
 }
 .conv-card.open .ar{max-height:220px;opacity:1;margin-top:10px;padding-top:10px;border-top-color:var(--border)}
 .conv-card .hint{
-  font-size:.68rem;
+  font-size:.75rem;
   font-family:'Noto Sans Arabic',sans-serif;
   color:var(--accent);margin-top:5px;
   opacity:.55;display:flex;align-items:center;gap:3px;
@@ -168,14 +175,14 @@ body{
 }
 .conv-card.open .hint{opacity:0;max-height:0;overflow:hidden;margin:0}
 
-/* ═══ VOCAB - IMPROVED ARABIC ═══ */
+/* ═══ VOCAB ═══ */
 .vf-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .vf-btn{
   background:var(--bg3);border:1px solid var(--border);
   color:var(--text-dim);
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.85rem;font-weight:500;
-  padding:6px 15px;border-radius:18px;cursor:pointer;
+  font-size:.9rem;font-weight:500;
+  padding:7px 16px;border-radius:18px;cursor:pointer;
   transition:all .18s;
 }
 .vf-btn:hover,.vf-btn.on{background:rgba(91,163,217,.15);border-color:rgba(91,163,217,.3);color:var(--blue)}
@@ -198,12 +205,12 @@ body{
 .v-card.flipped .v-back{transform:rotateY(0)}
 .v-card .v-cat{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.7rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-bottom:5px;color:var(--accent);
+  font-size:.75rem;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-bottom:5px;color:var(--accent);
 }
 .v-card .v-word{font-family:'Cormorant Garamond',serif;font-size:1.12rem;font-weight:600;color:var(--text)}
 .v-card .v-hint{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.68rem;color:var(--text-dim);margin-top:auto;padding-top:5px;
+  font-size:.72rem;color:var(--text-dim);margin-top:auto;padding-top:5px;
 }
 .v-card .v-back .v-cat{color:var(--green)}
 .v-card .v-back .v-word{
@@ -216,133 +223,195 @@ body{
   line-height:1.8;
 }
 
-/* ═══ FALLING WORDS GAME ═══ */
-.game-container{
+/* ═══ MATCHING GAME ═══ */
+.match-container{
   background:var(--card);
   border:1px solid var(--border);
   border-radius:18px;
   padding:24px;
   margin-bottom:20px;
 }
-.game-header{
-  display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:20px;
-  padding-bottom:15px;
+.match-header{
+  text-align:center;
+  margin-bottom:24px;
+  padding-bottom:18px;
   border-bottom:1px solid var(--border);
 }
-.game-title{
+.match-title{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:1.3rem;
-  font-weight:600;
+  font-size:1.4rem;
+  font-weight:700;
   color:var(--text);
+  margin-bottom:8px;
 }
-.game-stats{
+.match-desc{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.95rem;
+  color:var(--text-dim);
+  line-height:1.7;
+}
+.match-stats{
   display:flex;
   gap:20px;
+  justify-content:center;
+  margin-bottom:20px;
   font-family:'Noto Sans Arabic',sans-serif;
 }
-.stat{
+.match-stat{
   text-align:center;
+  padding:10px 20px;
+  background:var(--bg3);
+  border-radius:12px;
+  border:1px solid var(--border);
 }
-.stat-label{
-  font-size:.7rem;
+.match-stat-label{
+  font-size:.75rem;
   color:var(--text-dim);
-  margin-bottom:3px;
+  margin-bottom:4px;
 }
-.stat-value{
-  font-size:1.3rem;
+.match-stat-value{
+  font-size:1.5rem;
   font-weight:700;
   color:var(--accent);
 }
-.game-canvas-wrap{
-  position:relative;
-  background:linear-gradient(180deg,var(--bg),var(--bg2));
-  border:2px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  height:450px;
+.match-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-bottom:20px;
 }
-#gameCanvas{
-  display:block;
-  width:100%;
-  height:100%;
-}
-.game-controls{
+.match-column{
   display:flex;
-  gap:10px;
-  margin-top:15px;
+  flex-direction:column;
+  gap:8px;
+}
+.match-col-title{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:.9rem;
+  font-weight:600;
+  color:var(--text-mid);
+  text-align:center;
+  margin-bottom:6px;
+  padding:8px;
+  background:var(--bg3);
+  border-radius:8px;
+}
+.match-item{
+  background:var(--bg3);
+  border:2px solid var(--border);
+  border-radius:10px;
+  padding:14px 16px;
+  color:var(--text);
+  font-size:.95rem;
+  cursor:pointer;
+  transition:all .2s;
+  text-align:center;
+  min-height:56px;
+  display:flex;
+  align-items:center;
   justify-content:center;
 }
-.game-btn{
+.match-item.arabic{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:1.1rem;
+  font-weight:500;
+  direction:rtl;
+}
+.match-item:hover{
+  background:var(--card-hover);
+  border-color:rgba(91,163,217,.4);
+  transform:translateY(-2px);
+}
+.match-item.selected{
+  background:rgba(91,163,217,.2);
+  border-color:var(--blue);
+  color:#fff;
+  box-shadow:0 4px 12px rgba(91,163,217,.3);
+}
+.match-item.correct{
+  background:rgba(92,191,138,.2);
+  border-color:var(--green);
+  color:var(--green);
+  pointer-events:none;
+  animation:matchSuccess .4s ease;
+}
+.match-item.wrong{
+  background:rgba(224,92,92,.15);
+  border-color:var(--red);
+  animation:matchShake .4s ease;
+}
+@keyframes matchSuccess{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+@keyframes matchShake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-8px)}
+  75%{transform:translateX(8px)}
+}
+.match-controls{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.match-btn{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
   color:#fff;
   border:none;
-  padding:10px 24px;
+  padding:12px 28px;
   border-radius:12px;
-  font-size:.85rem;
+  font-size:.9rem;
   font-weight:600;
   font-family:'Noto Sans Arabic',sans-serif;
   cursor:pointer;
   transition:transform .15s,box-shadow .2s;
   box-shadow:0 4px 16px rgba(232,160,76,.25);
 }
-.game-btn:hover{
+.match-btn:hover{
   transform:translateY(-2px);
   box-shadow:0 6px 20px rgba(232,160,76,.35);
 }
-.game-btn.secondary{
+.match-btn.secondary{
   background:var(--bg3);
   color:var(--text);
   box-shadow:none;
-}
-.game-btn.secondary:hover{
-  background:var(--card-hover);
-}
-.game-input-wrap{
-  margin-top:15px;
-  display:flex;
-  gap:10px;
-}
-.game-input{
-  flex:1;
-  background:var(--bg3);
   border:1px solid var(--border);
+}
+.match-btn.secondary:hover{
+  background:var(--card-hover);
+  border-color:rgba(255,255,255,.2);
+}
+.match-result{
+  text-align:center;
+  padding:40px 20px;
+}
+.match-result-icon{
+  font-size:4rem;
+  margin-bottom:16px;
+}
+.match-result-title{
+  font-family:'Noto Sans Arabic',sans-serif;
+  font-size:1.8rem;
+  font-weight:700;
   color:var(--text);
-  padding:12px 16px;
-  border-radius:10px;
-  font-size:.95rem;
+  margin-bottom:12px;
+}
+.match-result-text{
   font-family:'Noto Sans Arabic',sans-serif;
-  direction:rtl;
-  text-align:right;
-}
-.game-input:focus{
-  outline:none;
-  border-color:var(--blue);
-  background:var(--card);
-}
-.game-submit{
-  background:var(--blue);
-  color:#fff;
-  border:none;
-  padding:0 24px;
-  border-radius:10px;
-  font-size:.85rem;
-  font-weight:600;
-  font-family:'Noto Sans Arabic',sans-serif;
-  cursor:pointer;
-  transition:background .2s;
-}
-.game-submit:hover{
-  background:#4a8fbd;
+  font-size:1.1rem;
+  color:var(--text-dim);
+  margin-bottom:24px;
 }
 
-/* ═══ QUIZ - IMPROVED ARABIC ═══ */
+/* ═══ QUIZ ═══ */
 .quiz-prog{display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .quiz-prog .trk{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
 .quiz-prog .fil{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1)}
 .quiz-prog .cnt{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.85rem;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap;
+  font-size:.9rem;color:var(--text-dim);font-variant-numeric:tabular-nums;white-space:nowrap;
 }
 .quiz-card{
   background:var(--card);border:1px solid var(--border);
@@ -353,8 +422,8 @@ body{
   background:rgba(91,163,217,.1);border:1px solid rgba(91,163,217,.2);
   color:var(--blue);
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.8rem;font-weight:600;
-  padding:4px 12px;border-radius:12px;margin-bottom:16px;letter-spacing:.4px;
+  font-size:.85rem;font-weight:600;
+  padding:5px 14px;border-radius:12px;margin-bottom:16px;letter-spacing:.4px;
 }
 .q-text{
   font-size:1.05rem;
@@ -370,24 +439,24 @@ body{
   direction:rtl;
   text-align:right;
   color:var(--blue);
-  font-size:1.25rem;
+  font-size:1.3rem;
   font-weight:500;
   line-height:2;
 }
 .q-opts{display:flex;flex-direction:column;gap:7px}
 .q-opt{
   background:var(--bg3);border:1px solid var(--border);
-  border-radius:10px;padding:12px 15px;
-  color:var(--text-mid);font-size:.95rem;
+  border-radius:10px;padding:13px 16px;
+  color:var(--text-mid);font-size:1rem;
   cursor:pointer;text-align:left;
   transition:all .18s;display:flex;align-items:center;gap:10px;
   font-family:'Noto Sans Arabic',sans-serif;
 }
 .q-opt .on{
-  flex-shrink:0;width:24px;height:24px;border-radius:6px;
+  flex-shrink:0;width:26px;height:26px;border-radius:6px;
   background:var(--card);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  font-size:.64rem;color:var(--text-dim);font-weight:600;
+  font-size:.7rem;color:var(--text-dim);font-weight:600;
 }
 .q-opt:hover{background:var(--card-hover);border-color:rgba(91,163,217,.3);color:var(--text)}
 .q-opt.correct{background:rgba(92,191,138,.12);border-color:var(--green);color:var(--green)}
@@ -397,7 +466,7 @@ body{
 .q-opt:disabled{cursor:default}
 .q-fb{
   margin-top:16px;
-  font-size:.9rem;
+  font-size:.95rem;
   font-family:'Noto Sans Arabic',sans-serif;
   color:var(--text-dim);
   min-height:20px;
@@ -407,8 +476,8 @@ body{
 .q-next{
   margin-top:18px;
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;border:none;padding:10px 24px;border-radius:20px;
-  font-size:.85rem;font-weight:600;cursor:pointer;
+  color:#fff;border:none;padding:11px 26px;border-radius:20px;
+  font-size:.9rem;font-weight:600;cursor:pointer;
   font-family:'Noto Sans Arabic',sans-serif;
   display:none;transition:transform .15s;
   box-shadow:0 4px 16px rgba(232,160,76,.25);
@@ -427,18 +496,18 @@ body{
 .score-ring .sv{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--text)}
 .score-box .ss{
   font-family:'Noto Sans Arabic',sans-serif;
-  color:var(--text-dim);font-size:.9rem;margin-bottom:24px;
+  color:var(--text-dim);font-size:.95rem;margin-bottom:24px;
 }
 .score-box .rst{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff;border:none;padding:10px 30px;border-radius:22px;
-  font-size:.85rem;font-weight:600;cursor:pointer;
+  color:#fff;border:none;padding:11px 32px;border-radius:22px;
+  font-size:.9rem;font-weight:600;cursor:pointer;
   font-family:'Noto Sans Arabic',sans-serif;
   box-shadow:0 4px 16px rgba(232,160,76,.25);transition:transform .15s;
 }
 .score-box .rst:hover{transform:translateY(-1px)}
 
-/* ═══ TIPS - IMPROVED ARABIC ═══ */
+/* ═══ TIPS ═══ */
 .tip-card{
   background:var(--card);border:1px solid var(--border);
   border-radius:var(--radius);padding:18px 20px;margin-bottom:9px;
@@ -447,37 +516,38 @@ body{
 .tip-card:hover{border-color:rgba(91,163,217,.2)}
 .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .tip-ico{
-  width:30px;height:30px;border-radius:8px;
+  width:32px;height:32px;border-radius:8px;
   background:rgba(91,163,217,.1);
-  display:flex;align-items:center;justify-content:center;font-size:14px;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
 }
 .tip-title{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:1.1rem;font-weight:600;color:var(--text);
+  font-size:1.15rem;font-weight:600;color:var(--text);
 }
-.tip-title span{color:var(--text-dim);font-weight:400;font-size:.9rem}
+.tip-title span{color:var(--text-dim);font-weight:400;font-size:.95rem}
 .tip-card p{
   font-family:'Noto Sans Arabic',sans-serif;
-  font-size:.95rem;color:var(--text-mid);line-height:1.9;
+  font-size:1rem;color:var(--text-mid);line-height:1.9;
 }
 .tip-card .ar-eg{
-  margin-top:12px;padding:10px 15px;
+  margin-top:12px;padding:11px 16px;
   background:rgba(91,163,217,.07);border-right:3px solid var(--blue);
   border-radius:7px 0 0 7px;
   font-family:'Noto Sans Arabic',sans-serif;
   direction:rtl;text-align:right;
-  color:var(--blue);font-size:1.05rem;line-height:1.9;font-weight:500;
+  color:var(--blue);font-size:1.1rem;line-height:1.9;font-weight:500;
 }
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:520px){
   .hero h1{font-size:1.85rem}
-  .nav{gap:5px;padding:18px 8px 14px}
-  .nav-btn{padding:8px 13px;font-size:.72rem}
-  .nav-btn .nav-icon{font-size:.85rem}
+  .nav{gap:6px;padding:18px 8px 14px}
+  .nav-btn{padding:10px 16px;font-size:.9rem}
+  .nav-btn .nav-icon{font-size:1.05rem}
   .v-grid{grid-template-columns:1fr 1fr}
   .quiz-card{padding:20px 16px 18px}
-  .game-canvas-wrap{height:350px}
+  .match-grid{grid-template-columns:1fr;gap:12px}
+  .match-col-title{font-size:.85rem}
 }
 </style>
 </head>
@@ -493,7 +563,7 @@ body{
     <span>Kosten</span><span>Kleidung</span><span>Aufgaben</span>
   </div>
 
-  <!-- AUDIO PLAYER - GOOGLE DRIVE EMBED -->
+  <!-- AUDIO PLAYER -->
   <div class="player-wrap">
     <div class="player">
       <iframe class="audio-iframe" src="https://drive.google.com/file/d/1XAOtSTX1Vg6TKEDMIbFCuWZCc7fCHiru/preview" allow="autoplay"></iframe>
@@ -510,8 +580,8 @@ body{
   <button class="nav-btn" onclick="switchTab('vocab',this)">
     <span class="nav-icon">📖</span> المفردات
   </button>
-  <button class="nav-btn" onclick="switchTab('game',this)">
-    <span class="nav-icon">🎮</span> لعبة
+  <button class="nav-btn" onclick="switchTab('match',this)">
+    <span class="nav-icon">🎮</span> ربط الكلمات
   </button>
   <button class="nav-btn" onclick="switchTab('quiz',this)">
     <span class="nav-icon">🧠</span> اختبار
@@ -525,7 +595,7 @@ body{
 <div class="main">
   <div id="conv" class="section active"></div>
   <div id="vocab" class="section"></div>
-  <div id="game" class="section"></div>
+  <div id="match" class="section"></div>
   <div id="quiz" class="section"></div>
   <div id="tips" class="section"></div>
 </div>
@@ -646,183 +716,178 @@ function renderVocab(){
 function setVF(c){ vFilter=c; renderVocab(); }
 
 // ═══════════════════════════════════════════════
-// FALLING WORDS GAME
+// MATCHING GAME
 // ═══════════════════════════════════════════════
-let gameActive = false;
-let gameScore = 0;
-let gameLives = 3;
-let fallingWords = [];
-let gameCanvas, gameCtx;
-let gameAnimFrame;
+let matchPairs = [];
+let matchDeList = [];
+let matchArList = [];
+let selectedDe = null;
+let selectedAr = null;
+let matchScore = 0;
+let matchAttempts = 0;
 
-function initGame(){
-  const gameHTML = `
-    <div class="game-container">
-      <div class="game-header">
-        <div class="game-title">🎮 لعبة الكلمات الساقطة</div>
-        <div class="game-stats">
-          <div class="stat">
-            <div class="stat-label">النقاط</div>
-            <div class="stat-value" id="gameScore">0</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">الأرواح</div>
-            <div class="stat-value" id="gameLives">3</div>
-          </div>
+function shuffle(a){
+  const r=[...a];
+  for(let i=r.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [r[i],r[j]]=[r[j],r[i]];
+  }
+  return r;
+}
+
+function initMatchGame(){
+  // Select 8 random vocab items
+  const selected = shuffle(vocab).slice(0, 8);
+  matchPairs = selected.map(v => ({de: v.de, ar: v.ar}));
+  matchDeList = shuffle(matchPairs.map(p => p.de));
+  matchArList = shuffle(matchPairs.map(p => p.ar));
+  selectedDe = null;
+  selectedAr = null;
+  matchScore = 0;
+  matchAttempts = 0;
+  renderMatchGame();
+}
+
+function renderMatchGame(){
+  const remainingPairs = matchPairs.filter(p => p.de !== null);
+  
+  if(remainingPairs.length === 0){
+    showMatchResult();
+    return;
+  }
+  
+  document.getElementById('match').innerHTML = `
+    <div class="match-container">
+      <div class="match-header">
+        <div class="match-title">🎮 لعبة ربط الكلمات</div>
+        <div class="match-desc">اربط كل كلمة ألمانية بترجمتها العربية الصحيحة</div>
+      </div>
+      <div class="match-stats">
+        <div class="match-stat">
+          <div class="match-stat-label">صحيحة</div>
+          <div class="match-stat-value">${matchScore}</div>
+        </div>
+        <div class="match-stat">
+          <div class="match-stat-label">المحاولات</div>
+          <div class="match-stat-value">${matchAttempts}</div>
         </div>
       </div>
-      <div class="game-canvas-wrap">
-        <canvas id="gameCanvas"></canvas>
+      <div class="match-grid">
+        <div class="match-column">
+          <div class="match-col-title">🇩🇪 الألمانية</div>
+          ${matchDeList.map((de, i) => 
+            de ? `<div class="match-item" data-de="${de}" onclick="selectDe('${de}')">${de}</div>` : 
+            '<div class="match-item correct">✓</div>'
+          ).join('')}
+        </div>
+        <div class="match-column">
+          <div class="match-col-title">🇸🇦 العربية</div>
+          ${matchArList.map((ar, i) => 
+            ar ? `<div class="match-item arabic" data-ar="${ar}" onclick="selectAr('${ar}')">${ar}</div>` : 
+            '<div class="match-item correct">✓</div>'
+          ).join('')}
+        </div>
       </div>
-      <div class="game-input-wrap">
-        <input type="text" class="game-input" id="gameInput" placeholder="اكتب الترجمة هنا..." disabled>
-        <button class="game-submit" id="gameSubmit" onclick="checkAnswer()" disabled>إرسال</button>
-      </div>
-      <div class="game-controls">
-        <button class="game-btn" id="startBtn" onclick="startGame()">▶ ابدأ اللعبة</button>
-        <button class="game-btn secondary" onclick="stopGame()">⏸ إيقاف</button>
+      <div class="match-controls">
+        <button class="match-btn" onclick="initMatchGame()">🔄 لعبة جديدة</button>
       </div>
     </div>
   `;
-  document.getElementById('game').innerHTML = gameHTML;
   
-  gameCanvas = document.getElementById('gameCanvas');
-  gameCtx = gameCanvas.getContext('2d');
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  updateMatchSelection();
 }
 
-function resizeCanvas(){
-  const wrap = document.querySelector('.game-canvas-wrap');
-  gameCanvas.width = wrap.clientWidth;
-  gameCanvas.height = wrap.clientHeight;
+function selectDe(de){
+  selectedDe = selectedDe === de ? null : de;
+  updateMatchSelection();
+  checkMatch();
 }
 
-function startGame(){
-  gameActive = true;
-  gameScore = 0;
-  gameLives = 3;
-  fallingWords = [];
-  updateStats();
-  document.getElementById('gameInput').disabled = false;
-  document.getElementById('gameSubmit').disabled = false;
-  document.getElementById('gameInput').value = '';
-  document.getElementById('startBtn').textContent = '▶ اللعبة جارية...';
-  document.getElementById('startBtn').disabled = true;
-  spawnWord();
-  gameLoop();
+function selectAr(ar){
+  selectedAr = selectedAr === ar ? null : ar;
+  updateMatchSelection();
+  checkMatch();
 }
 
-function stopGame(){
-  gameActive = false;
-  if(gameAnimFrame) cancelAnimationFrame(gameAnimFrame);
-  document.getElementById('gameInput').disabled = true;
-  document.getElementById('gameSubmit').disabled = true;
-  document.getElementById('startBtn').textContent = '▶ ابدأ اللعبة';
-  document.getElementById('startBtn').disabled = false;
-}
-
-function updateStats(){
-  document.getElementById('gameScore').textContent = gameScore;
-  document.getElementById('gameLives').textContent = gameLives;
-}
-
-function spawnWord(){
-  if(!gameActive) return;
-  const word = vocab[Math.floor(Math.random() * vocab.length)];
-  fallingWords.push({
-    de: word.de,
-    ar: word.ar,
-    x: Math.random() * (gameCanvas.width - 150) + 50,
-    y: -30,
-    speed: 0.8 + Math.random() * 0.5
+function updateMatchSelection(){
+  document.querySelectorAll('.match-item').forEach(item => {
+    item.classList.remove('selected', 'wrong');
+    if(item.dataset.de === selectedDe || item.dataset.ar === selectedAr){
+      item.classList.add('selected');
+    }
   });
-  setTimeout(spawnWord, 3000 - Math.min(gameScore * 50, 1500));
 }
 
-function gameLoop(){
-  if(!gameActive) return;
+function checkMatch(){
+  if(!selectedDe || !selectedAr) return;
   
-  gameCtx.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+  matchAttempts++;
   
-  // Draw falling words
-  gameCtx.font = '22px "Cormorant Garamond"';
-  gameCtx.textAlign = 'center';
+  const pair = matchPairs.find(p => p.de === selectedDe && p.ar === selectedAr);
   
-  for(let i = fallingWords.length - 1; i >= 0; i--){
-    const word = fallingWords[i];
-    word.y += word.speed;
+  if(pair){
+    // Correct match!
+    matchScore++;
     
-    // Draw word
-    gameCtx.fillStyle = '#5ba3d9';
-    gameCtx.fillText(word.de, word.x, word.y);
-    
-    // Check if word reached bottom
-    if(word.y > gameCanvas.height){
-      fallingWords.splice(i, 1);
-      gameLives--;
-      updateStats();
-      
-      if(gameLives <= 0){
-        endGame();
-        return;
+    // Mark as correct
+    document.querySelectorAll('.match-item').forEach(item => {
+      if(item.dataset.de === selectedDe || item.dataset.ar === selectedAr){
+        item.classList.add('correct');
+        item.classList.remove('selected');
       }
-    }
+    });
+    
+    // Remove from lists
+    const deIdx = matchDeList.indexOf(selectedDe);
+    const arIdx = matchArList.indexOf(selectedAr);
+    matchDeList[deIdx] = null;
+    matchArList[arIdx] = null;
+    
+    selectedDe = null;
+    selectedAr = null;
+    
+    setTimeout(() => {
+      renderMatchGame();
+    }, 600);
+    
+  } else {
+    // Wrong match
+    document.querySelectorAll('.match-item').forEach(item => {
+      if(item.dataset.de === selectedDe || item.dataset.ar === selectedAr){
+        item.classList.add('wrong');
+      }
+    });
+    
+    setTimeout(() => {
+      selectedDe = null;
+      selectedAr = null;
+      updateMatchSelection();
+    }, 800);
   }
-  
-  gameAnimFrame = requestAnimationFrame(gameLoop);
 }
 
-function checkAnswer(){
-  const input = document.getElementById('gameInput').value.trim();
-  if(!input) return;
-  
-  for(let i = 0; i < fallingWords.length; i++){
-    if(fallingWords[i].ar === input || fallingWords[i].de.toLowerCase() === input.toLowerCase()){
-      fallingWords.splice(i, 1);
-      gameScore += 10;
-      updateStats();
-      document.getElementById('gameInput').value = '';
-      return;
-    }
-  }
-  
-  // Wrong answer
-  document.getElementById('gameInput').value = '';
+function showMatchResult(){
+  const accuracy = Math.round((matchScore / matchAttempts) * 100);
+  document.getElementById('match').innerHTML = `
+    <div class="match-container">
+      <div class="match-result">
+        <div class="match-result-icon">🎉</div>
+        <div class="match-result-title">أحسنت!</div>
+        <div class="match-result-text">
+          أكملت اللعبة بنجاح<br>
+          ${matchScore} إجابة صحيحة من ${matchAttempts} محاولة<br>
+          دقة: ${accuracy}%
+        </div>
+        <button class="match-btn" onclick="initMatchGame()">🔄 العب مرة أخرى</button>
+      </div>
+    </div>
+  `;
 }
-
-function endGame(){
-  stopGame();
-  gameCtx.fillStyle = 'rgba(12, 15, 18, 0.9)';
-  gameCtx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-  
-  gameCtx.fillStyle = '#e8a04c';
-  gameCtx.font = '36px "Noto Sans Arabic"';
-  gameCtx.textAlign = 'center';
-  gameCtx.fillText('انتهت اللعبة!', gameCanvas.width / 2, gameCanvas.height / 2 - 30);
-  
-  gameCtx.fillStyle = '#a3adb8';
-  gameCtx.font = '24px "Noto Sans Arabic"';
-  gameCtx.fillText(`نقاطك: ${gameScore}`, gameCanvas.width / 2, gameCanvas.height / 2 + 20);
-}
-
-// Allow Enter key to submit
-document.addEventListener('DOMContentLoaded', ()=>{
-  setTimeout(()=>{
-    const input = document.getElementById('gameInput');
-    if(input){
-      input.addEventListener('keypress', (e)=>{
-        if(e.key === 'Enter') checkAnswer();
-      });
-    }
-  }, 100);
-});
 
 // ═══════════════════════════════════════════════
 // QUIZ
 // ═══════════════════════════════════════════════
 let qList=[],qIdx=0,qScore=0;
-function shuffle(a){const r=[...a];for(let i=r.length-1;i>0;i--){const j=0|Math.random()*(i+1);[r[i],r[j]]=[r[j],r[i]]}return r}
 
 function buildQuiz(){
   qList=[];
@@ -916,7 +981,7 @@ function switchTab(id,btn){
   btn.classList.add('active');
   if(id==='conv') renderConv();
   else if(id==='vocab') renderVocab();
-  else if(id==='game') initGame();
+  else if(id==='match') initMatchGame();
   else if(id==='quiz') renderQuiz();
   else if(id==='tips') renderTips();
 }
