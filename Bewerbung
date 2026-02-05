@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مُنشئ مستندات التقديم الألمانية | Bewerbung</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --success: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            color: var(--dark);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .nav-tab:hover {
+            background: var(--light);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1600px;
+            margin: 30px auto;
+            padding: 0 30px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            max-height: 85vh;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .form-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .form-section::-webkit-scrollbar-track {
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .form-section::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* Preview Section */
+        .preview-section {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 100px;
+        }
+
+        .preview-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .zoom-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .zoom-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--border);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .zoom-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .preview-container {
+            background: #e5e7eb;
+            padding: 20px;
+            border-radius: 12px;
+            overflow: auto;
+            max-height: 70vh;
+        }
+
+        .preview-page {
+            background: white;
+            width: 595px;
+            min-height: 842px;
+            margin: 0 auto;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            direction: ltr;
+            text-align: left;
+            transform-origin: top center;
+            transition: transform 0.3s;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .label-german {
+            color: var(--primary);
+            font-size: 15px;
+        }
+
+        .label-arabic {
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 400;
+            margin-right: 8px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s;
+            direction: ltr;
+            text-align: left;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .section-divider {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 35px 0 25px 0;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            width: 100%;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-add {
+            background: white;
+            border: 2px dashed var(--primary);
+            color: var(--primary);
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .btn-add:hover {
+            background: rgba(99, 102, 241, 0.05);
+            border-color: var(--primary-dark);
+        }
+
+        /* Repeatable Sections */
+        .repeatable-item {
+            background: var(--light);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+        }
+
+        /* Photo Upload */
+        .photo-upload-area {
+            border: 2px dashed var(--border);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .photo-upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.02);
+        }
+
+        .photo-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 10px auto;
+            border: 3px solid var(--primary);
+            display: none;
+        }
+
+        /* CV Preview Styles */
+        .cv-header {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .cv-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            float: right;
+            margin-left: 20px;
+            border: 2px solid #2c3e50;
+        }
+
+        .cv-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .cv-contact {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .cv-section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        .cv-section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .cv-item {
+            margin-bottom: 15px;
+        }
+
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .cv-item-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .cv-item-date {
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .cv-item-subtitle {
+            color: #555;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .cv-item-description {
+            color: #666;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* Deckblatt Styles */
+        .deckblatt-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 842px;
+            text-align: center;
+        }
+
+        .deckblatt-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #2c3e50;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .deckblatt-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .deckblatt-subtitle {
+            font-size: 24px;
+            color: #3498db;
+            margin-bottom: 60px;
+        }
+
+        .deckblatt-contact {
+            font-size: 14px;
+            line-height: 2;
+            color: #555;
+        }
+
+        .deckblatt-separator {
+            width: 200px;
+            height: 3px;
+            background: #3498db;
+            margin: 40px auto;
+        }
+
+        /* Motivationsschreiben Styles */
+        .letter-header {
+            margin-bottom: 40px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .letter-company {
+            margin-bottom: 30px;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .letter-date {
+            text-align: right;
+            margin-bottom: 30px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .letter-subject {
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .letter-greeting {
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .letter-content {
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .letter-closing {
+            margin-top: 40px;
+            font-size: 12px;
+        }
+
+        .letter-signature {
+            margin-top: 60px;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .preview-section {
+                position: relative;
+                top: 0;
+            }
+
+            .preview-page {
+                transform: scale(0.75);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-tabs {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-tab {
+                width: 100%;
+            }
+
+            .preview-page {
+                transform: scale(0.5);
+                width: 595px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .navbar, .form-section, .preview-controls, .btn-success {
+                display: none !important;
+            }
+
+            .preview-section {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .preview-container {
+                background: white;
+                padding: 0;
+            }
+
+            .preview-page {
+                box-shadow: none;
+                transform: none !important;
+                page-break-after: always;
+            }
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Color Picker */
+        .color-picker-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .color-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .color-option label {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        input[type="color"] {
+            width: 60px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-file-alt"></i> Bewerbung Builder
+            </div>
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="switchTab('deckblatt')">
+                    <i class="fas fa-image"></i> Deckblatt
+                </button>
+                <button class="nav-tab" onclick="switchTab('lebenslauf')">
+                    <i class="fas fa-user"></i> Lebenslauf
+                </button>
+                <button class="nav-tab" onclick="switchTab('motivation')">
+                    <i class="fas fa-envelope"></i> Anschreiben
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="content-wrapper">
+            <!-- Form Section -->
+            <div class="form-section">
+                <!-- Deckblatt Form -->
+                <div id="form-deckblatt" class="tab-content active">
+                    <div class="form-header">
+                        <h2>🎨 Deckblatt</h2>
+                        <p>الصفحة الأولى - الغلاف الاحترافي</p>
+                    </div>
+
+                    <div class="photo-upload-area" onclick="document.getElementById('photo-deck').click()">
+                        <i class="fas fa-camera" style="font-size: 40px; color: #cbd5e1; margin-bottom: 10px;"></i>
+                        <p style="color: #6b7280;">انقر لإضافة صورة شخصية</p>
+                        <input type="file" id="photo-deck" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="photo-deck-preview" class="photo-preview">
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Vorname & Nachname</span>
+                            <span class="label-arabic">الاسم الكامل</span>
+                        </label>
+                        <input type="text" id="deck-name" placeholder="z.B. Mohammed Al-Ahmad">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Beruf / Position</span>
+                            <span class="label-arabic">المهنة أو الوظيفة المطلوبة</span>
+                        </label>
+                        <input type="text" id="deck-position" placeholder="z.B. Grafikdesigner">
+                    </div>
+
+                    <div class="section-divider">
+                        Kontaktdaten - معلومات التواصل
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Adresse</span>
+                            <span class="label-arabic">العنوان</span>
+                        </label>
+                        <input type="text" id="deck-address" placeholder="Musterstraße 123, 10115 Berlin">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Telefon</span>
+                            <span class="label-arabic">رقم الهاتف</span>
+                        </label>
+                        <input type="text" id="deck-phone" placeholder="+49 176 12345678">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">E-Mail</span>
+                            <span class="label-arabic">البريد الإلكتروني</span>
+                        </label>
+                        <input type="email" id="deck-email" placeholder="m.ahmad@email.de">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Geburtsdatum & Geburtsort</span>
+                            <span class="label-arabic">تاريخ ومكان الميلاد</span>
+                        </label>
+                        <input type="text" id="deck-birth" placeholder="15.03.1990 in Damascus, Syrien">
+                    </div>
+
+                    <div class="section-divider">
+                        Design Anpassung - تخصيص التصميم
+                    </div>
+
+                    <div class="color-picker-group">
+                        <div class="color-option">
+                            <label class="label-german">Hauptfarbe</label>
+                            <input type="color" id="primary-color" value="#2c3e50">
+                        </div>
+                        <div class="color-option">
+                            <label class="label-german">Akzentfarbe</label>
+                            <input type="color" id="accent-color" value="#3498db">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lebenslauf Form -->
+                <div id="form-lebenslauf" class="tab-content">
+                    <div class="form-header">
+                        <h2>📋 Lebenslauf</h2>
+                        <p>السيرة الذاتية المفصلة</p>
+                    </div>
+
+                    <div class="section-divider">
+                        Persönliche Daten - المعلومات الشخصية
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Staatsangehörigkeit</span>
+                            <span class="label-arabic">الجنسية</span>
+                        </label>
+                        <input type="text" id="cv-nationality" placeholder="Syrisch">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Familienstand</span>
+                            <span class="label-arabic">الحالة الاجتماعية</span>
+                        </label>
+                        <select id="cv-marital">
+                            <option value="">Bitte wählen</option>
+                            <option value="Ledig">Ledig - أعزب/عزباء</option>
+                            <option value="Verheiratet">Verheiratet - متزوج/متزوجة</option>
+                            <option value="Geschieden">Geschieden - مطلق/مطلقة</option>
+                        </select>
+                    </div>
+
+                    <div class="section-divider">
+                        Berufserfahrung - الخبرة المهنية
+                    </div>
+                    <div id="experience-container"></div>
+                    <button class="btn btn-add" onclick="addExperience()">
+                        <i class="fas fa-plus"></i> إضافة خبرة مهنية
+                    </button>
+
+                    <div class="section-divider">
+                        Ausbildung - التعليم
+                    </div>
+                    <div id="education-container"></div>
+                    <button class="btn btn-add" onclick="addEducation()">
+                        <i class="fas fa-plus"></i> إضافة مؤهل تعليمي
+                    </button>
+
+                    <div class="section-divider">
+                        Kenntnisse - المهارات
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Sprachkenntnisse</span>
+                            <span class="label-arabic">اللغات</span>
+                        </label>
+                        <textarea id="cv-languages" placeholder="Arabisch (Muttersprache)&#10;Deutsch (B2)&#10;Englisch (B1)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">EDV-Kenntnisse</span>
+                            <span class="label-arabic">مهارات الكمبيوتر</span>
+                        </label>
+                        <textarea id="cv-computer" placeholder="Adobe Photoshop, Illustrator, InDesign&#10;MS Office (Word, Excel, PowerPoint)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Weitere Kenntnisse</span>
+                            <span class="label-arabic">مهارات أخرى</span>
+                        </label>
+                        <textarea id="cv-other" placeholder="Führerschein Klasse B"></textarea>
+                    </div>
+                </div>
+
+                <!-- Motivationsschreiben Form -->
+                <div id="form-motivation" class="tab-content">
+                    <div class="form-header">
+                        <h2>✉️ Anschreiben</h2>
+                        <p>خطاب التحفيز والتقديم</p>
+                    </div>
+
+                    <div class="section-divider">
+                        An das Unternehmen - إلى الشركة
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Firma</span>
+                            <span class="label-arabic">اسم الشركة</span>
+                        </label>
+                        <input type="text" id="letter-company" placeholder="Design Studio GmbH">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Ansprechpartner</span>
+                            <span class="label-arabic">الشخص المسؤول (اختياري)</span>
+                        </label>
+                        <input type="text" id="letter-contact" placeholder="Frau/Herrn Schmidt">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Straße & Hausnummer</span>
+                            <span class="label-arabic">عنوان الشركة</span>
+                        </label>
+                        <input type="text" id="letter-street" placeholder="Hauptstraße 45">
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">PLZ & Ort</span>
+                            <span class="label-arabic">الرمز البريدي والمدينة</span>
+                        </label>
+                        <input type="text" id="letter-city" placeholder="10115 Berlin">
+                    </div>
+
+                    <div class="section-divider">
+                        Betreff - الموضوع
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Betreff</span>
+                            <span class="label-arabic">موضوع التقديم</span>
+                        </label>
+                        <input type="text" id="letter-subject" placeholder="Bewerbung als Grafikdesigner">
+                    </div>
+
+                    <div class="section-divider">
+                        Anschreiben Text - نص الخطاب
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Einleitung</span>
+                            <span class="label-arabic">المقدمة - كيف علمت بالوظيفة ولماذا تتقدم</span>
+                        </label>
+                        <textarea id="letter-intro" rows="4" placeholder="sehr geehrte Damen und Herren,&#10;&#10;mit großem Interesse habe ich Ihre Stellenausschreibung für die Position als Grafikdesigner auf Ihrer Website gelesen..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Hauptteil</span>
+                            <span class="label-arabic">الجزء الرئيسي - خبراتك ومهاراتك ولماذا أنت مناسب</span>
+                        </label>
+                        <textarea id="letter-body" rows="6" placeholder="Während meiner dreijährigen Tätigkeit als Grafikdesigner bei XYZ Studio habe ich umfangreiche Erfahrungen in der Gestaltung von Corporate Designs gesammelt..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <span class="label-german">Schluss</span>
+                            <span class="label-arabic">الخاتمة - الجملة الختامية</span>
+                        </label>
+                        <textarea id="letter-conclusion" rows="3" placeholder="Über eine Einladung zu einem persönlichen Gespräch würde ich mich sehr freuen.&#10;&#10;Mit freundlichen Grüßen"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <div class="preview-controls">
+                    <div style="font-weight: 600; color: var(--dark);">
+                        <i class="fas fa-eye"></i> معاينة
+                    </div>
+                    <div class="zoom-controls">
+                        <button class="zoom-btn" onclick="zoomOut()">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="zoom-btn" onclick="zoomIn()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="preview-container">
+                    <!-- Deckblatt Preview -->
+                    <div id="preview-deckblatt" class="preview-page">
+                        <div class="deckblatt-container">
+                            <img id="deck-photo-display" class="deckblatt-photo" style="display: none;">
+                            <div class="deckblatt-title" id="deck-name-display">Ihr Name</div>
+                            <div class="deckblatt-subtitle" id="deck-position-display">Ihre Position</div>
+                            <div class="deckblatt-separator"></div>
+                            <div class="deckblatt-contact" id="deck-contact-display">
+                                <div><strong>Bewerbung als</strong></div>
+                                <div id="deck-position-display2" style="font-size: 18px; margin: 20px 0;"></div>
+                                <div id="deck-address-display"></div>
+                                <div id="deck-phone-display"></div>
+                                <div id="deck-email-display"></div>
+                                <div id="deck-birth-display"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lebenslauf Preview -->
+                    <div id="preview-lebenslauf" class="preview-page" style="display: none;">
+                        <div class="cv-header">
+                            <img id="cv-photo-display" class="cv-photo" style="display: none;">
+                            <div class="cv-name" id="cv-name-display">Ihr Name</div>
+                            <div class="cv-contact" id="cv-contact-display"></div>
+                        </div>
+                        <div class="cv-section">
+                            <div class="cv-section-title">Berufserfahrung</div>
+                            <div id="cv-experience-display"></div>
+                        </div>
+                        <div class="cv-section">
+                            <div class="cv-section-title">Ausbildung</div>
+                            <div id="cv-education-display"></div>
+                        </div>
+                        <div class="cv-section">
+                            <div class="cv-section-title">Kenntnisse</div>
+                            <div id="cv-skills-display"></div>
+                        </div>
+                    </div>
+
+                    <!-- Motivationsschreiben Preview -->
+                    <div id="preview-motivation" class="preview-page" style="display: none;">
+                        <div class="letter-header" id="letter-sender-display"></div>
+                        <div class="letter-company" id="letter-recipient-display"></div>
+                        <div class="letter-date" id="letter-date-display"></div>
+                        <div class="letter-subject" id="letter-subject-display"></div>
+                        <div class="letter-greeting" id="letter-greeting-display"></div>
+                        <div class="letter-content" id="letter-content-display"></div>
+                        <div class="letter-closing" id="letter-closing-display"></div>
+                        <div class="letter-signature" id="letter-signature-display"></div>
+                    </div>
+                </div>
+
+                <button class="btn btn-success" onclick="downloadAllPDF()">
+                    <i class="fas fa-download"></i> تحميل جميع المستندات PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        let currentTab = 'deckblatt';
+        let zoomLevel = 1;
+        let experienceCount = 0;
+        let educationCount = 0;
+
+        // Tab Switching
+        function switchTab(tab) {
+            currentTab = tab;
+            
+            // Update nav tabs
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            event.target.closest('.nav-tab').classList.add('active');
+            
+            // Update form content
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`form-${tab}`).classList.add('active');
+            
+            // Update preview
+            document.querySelectorAll('.preview-page').forEach(p => p.style.display = 'none');
+            document.getElementById(`preview-${tab}`).style.display = 'block';
+        }
+
+        // Zoom Controls
+        function zoomIn() {
+            zoomLevel = Math.min(zoomLevel + 0.1, 1.5);
+            updateZoom();
+        }
+
+        function zoomOut() {
+            zoomLevel = Math.max(zoomLevel - 0.1, 0.5);
+            updateZoom();
+        }
+
+        function updateZoom() {
+            document.querySelectorAll('.preview-page').forEach(page => {
+                page.style.transform = `scale(${zoomLevel})`;
+            });
+        }
+
+        // Photo Upload for Deckblatt
+        document.getElementById('photo-deck').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo-deck-preview').src = e.target.result;
+                    document.getElementById('photo-deck-preview').style.display = 'block';
+                    document.getElementById('deck-photo-display').src = e.target.result;
+                    document.getElementById('deck-photo-display').style.display = 'block';
+                    document.getElementById('cv-photo-display').src = e.target.result;
+                    document.getElementById('cv-photo-display').style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Color Pickers
+        document.getElementById('primary-color').addEventListener('input', function(e) {
+            document.querySelectorAll('.cv-name, .cv-section-title, .cv-item-title, .deckblatt-title').forEach(el => {
+                el.style.color = e.target.value;
+            });
+            document.querySelectorAll('.cv-header, .deckblatt-separator').forEach(el => {
+                el.style.borderColor = e.target.value;
+            });
+            document.querySelector('.deckblatt-separator').style.background = e.target.value;
+        });
+
+        document.getElementById('accent-color').addEventListener('input', function(e) {
+            document.querySelectorAll('.cv-section-title, .deckblatt-subtitle').forEach(el => {
+                el.style.borderColor = e.target.value;
+            });
+            document.querySelector('.deckblatt-subtitle').style.color = e.target.value;
+        });
+
+        // Add Experience
+        function addExperience() {
+            experienceCount++;
+            const container = document.getElementById('experience-container');
+            const div = document.createElement('div');
+            div.className = 'repeatable-item';
+            div.id = `exp-${experienceCount}`;
+            div.innerHTML = `
+                <button type="button" class="btn btn-danger remove-btn" onclick="removeElement('exp-${experienceCount}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="form-group">
+                    <label><span class="label-german">Zeitraum</span> <span class="label-arabic">(الفترة)</span></label>
+                    <input type="text" class="exp-period" placeholder="01/2020 - 12/2023">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Position</span> <span class="label-arabic">(المسمى الوظيفي)</span></label>
+                    <input type="text" class="exp-title" placeholder="Grafikdesigner">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Firma & Ort</span> <span class="label-arabic">(الشركة والمكان)</span></label>
+                    <input type="text" class="exp-company" placeholder="Design Studio GmbH, Berlin">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Aufgaben</span> <span class="label-arabic">(المهام)</span></label>
+                    <textarea class="exp-tasks" placeholder="Gestaltung von Logos, Corporate Designs..."></textarea>
+                </div>
+            `;
+            container.appendChild(div);
+            attachListeners();
+        }
+
+        // Add Education
+        function addEducation() {
+            educationCount++;
+            const container = document.getElementById('education-container');
+            const div = document.createElement('div');
+            div.className = 'repeatable-item';
+            div.id = `edu-${educationCount}`;
+            div.innerHTML = `
+                <button type="button" class="btn btn-danger remove-btn" onclick="removeElement('edu-${educationCount}')">
+                    <i class="fas fa-trash"></i>
+                </button>
+                <div class="form-group">
+                    <label><span class="label-german">Zeitraum</span> <span class="label-arabic">(الفترة)</span></label>
+                    <input type="text" class="edu-period" placeholder="09/2015 - 07/2019">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Abschluss</span> <span class="label-arabic">(الشهادة)</span></label>
+                    <input type="text" class="edu-degree" placeholder="Bachelor of Arts">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Institution & Ort</span> <span class="label-arabic">(المؤسسة)</span></label>
+                    <input type="text" class="edu-institution" placeholder="Universität der Künste, Berlin">
+                </div>
+                <div class="form-group">
+                    <label><span class="label-german">Schwerpunkte</span> <span class="label-arabic">(التخصص)</span></label>
+                    <textarea class="edu-focus" placeholder="Grafikdesign, Typografie..."></textarea>
+                </div>
+            `;
+            container.appendChild(div);
+            attachListeners();
+        }
+
+        function removeElement(id) {
+            document.getElementById(id).remove();
+            updateAllPreviews();
+        }
+
+        // Update Previews
+        function updateDeckblatt() {
+            const name = document.getElementById('deck-name').value || 'Ihr Name';
+            const position = document.getElementById('deck-position').value || 'Ihre Position';
+            const address = document.getElementById('deck-address').value;
+            const phone = document.getElementById('deck-phone').value;
+            const email = document.getElementById('deck-email').value;
+            const birth = document.getElementById('deck-birth').value;
+
+            document.getElementById('deck-name-display').textContent = name;
+            document.getElementById('deck-position-display').textContent = position;
+            document.getElementById('deck-position-display2').textContent = position;
+            
+            let contactHTML = '<div><strong>Bewerbung als</strong></div>';
+            contactHTML += `<div style="font-size: 18px; margin: 20px 0;">${position}</div>`;
+            if (address) contactHTML += `<div>${address}</div>`;
+            if (phone) contactHTML += `<div>Tel: ${phone}</div>`;
+            if (email) contactHTML += `<div>E-Mail: ${email}</div>`;
+            if (birth) contactHTML += `<div>Geboren: ${birth}</div>`;
+            
+            document.getElementById('deck-contact-display').innerHTML = contactHTML;
+        }
+
+        function updateLebenslauf() {
+            const name = document.getElementById('deck-name').value || 'Ihr Name';
+            const address = document.getElementById('deck-address').value;
+            const phone = document.getElementById('deck-phone').value;
+            const email = document.getElementById('deck-email').value;
+            const birth = document.getElementById('deck-birth').value;
+            const nationality = document.getElementById('cv-nationality').value;
+            const marital = document.getElementById('cv-marital').value;
+
+            document.getElementById('cv-name-display').textContent = name;
+            
+            let contactHTML = '';
+            if (address) contactHTML += `<div>${address}</div>`;
+            if (phone) contactHTML += `<div>Tel: ${phone}</div>`;
+            if (email) contactHTML += `<div>E-Mail: ${email}</div>`;
+            if (birth) contactHTML += `<div>Geboren: ${birth}</div>`;
+            if (nationality) contactHTML += `<div>Staatsangehörigkeit: ${nationality}</div>`;
+            if (marital) contactHTML += `<div>Familienstand: ${marital}</div>`;
+            
+            document.getElementById('cv-contact-display').innerHTML = contactHTML;
+
+            // Experience
+            let expHTML = '';
+            document.querySelectorAll('[id^="exp-"]').forEach(item => {
+                const period = item.querySelector('.exp-period').value;
+                const title = item.querySelector('.exp-title').value;
+                const company = item.querySelector('.exp-company').value;
+                const tasks = item.querySelector('.exp-tasks').value;
+
+                if (title || company) {
+                    expHTML += `
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <div class="cv-item-title">${title}</div>
+                                <div class="cv-item-date">${period}</div>
+                            </div>
+                            <div class="cv-item-subtitle">${company}</div>
+                            ${tasks ? `<div class="cv-item-description">${tasks}</div>` : ''}
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('cv-experience-display').innerHTML = expHTML || 
+                '<div class="cv-item-description" style="color: #999;">Keine Erfahrung hinzugefügt</div>';
+
+            // Education
+            let eduHTML = '';
+            document.querySelectorAll('[id^="edu-"]').forEach(item => {
+                const period = item.querySelector('.edu-period').value;
+                const degree = item.querySelector('.edu-degree').value;
+                const institution = item.querySelector('.edu-institution').value;
+                const focus = item.querySelector('.edu-focus').value;
+
+                if (degree || institution) {
+                    eduHTML += `
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <div class="cv-item-title">${degree}</div>
+                                <div class="cv-item-date">${period}</div>
+                            </div>
+                            <div class="cv-item-subtitle">${institution}</div>
+                            ${focus ? `<div class="cv-item-description">${focus}</div>` : ''}
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('cv-education-display').innerHTML = eduHTML || 
+                '<div class="cv-item-description" style="color: #999;">Keine Ausbildung hinzugefügt</div>';
+
+            // Skills
+            const languages = document.getElementById('cv-languages').value;
+            const computer = document.getElementById('cv-computer').value;
+            const other = document.getElementById('cv-other').value;
+
+            let skillsHTML = '';
+            if (languages) {
+                skillsHTML += `
+                    <div class="cv-item">
+                        <div class="cv-item-title">Sprachkenntnisse</div>
+                        <div class="cv-item-description">${languages.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+            if (computer) {
+                skillsHTML += `
+                    <div class="cv-item">
+                        <div class="cv-item-title">EDV-Kenntnisse</div>
+                        <div class="cv-item-description">${computer.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+            if (other) {
+                skillsHTML += `
+                    <div class="cv-item">
+                        <div class="cv-item-title">Weitere Kenntnisse</div>
+                        <div class="cv-item-description">${other.replace(/\n/g, '<br>')}</div>
+                    </div>
+                `;
+            }
+            document.getElementById('cv-skills-display').innerHTML = skillsHTML || 
+                '<div class="cv-item-description" style="color: #999;">Keine Kenntnisse hinzugefügt</div>';
+        }
+
+        function updateMotivation() {
+            const name = document.getElementById('deck-name').value || 'Ihr Name';
+            const address = document.getElementById('deck-address').value;
+            const phone = document.getElementById('deck-phone').value;
+            const email = document.getElementById('deck-email').value;
+
+            const company = document.getElementById('letter-company').value;
+            const contact = document.getElementById('letter-contact').value;
+            const street = document.getElementById('letter-street').value;
+            const city = document.getElementById('letter-city').value;
+            const subject = document.getElementById('letter-subject').value;
+            const intro = document.getElementById('letter-intro').value;
+            const body = document.getElementById('letter-body').value;
+            const conclusion = document.getElementById('letter-conclusion').value;
+
+            // Sender
+            let senderHTML = `<div><strong>${name}</strong></div>`;
+            if (address) senderHTML += `<div>${address}</div>`;
+            if (phone) senderHTML += `<div>${phone}</div>`;
+            if (email) senderHTML += `<div>${email}</div>`;
+            document.getElementById('letter-sender-display').innerHTML = senderHTML;
+
+            // Recipient
+            let recipientHTML = '';
+            if (company) recipientHTML += `<div><strong>${company}</strong></div>`;
+            if (contact) recipientHTML += `<div>${contact}</div>`;
+            if (street) recipientHTML += `<div>${street}</div>`;
+            if (city) recipientHTML += `<div>${city}</div>`;
+            document.getElementById('letter-recipient-display').innerHTML = recipientHTML;
+
+            // Date
+            const today = new Date();
+            const dateStr = `${today.getDate().toString().padStart(2, '0')}.${(today.getMonth() + 1).toString().padStart(2, '0')}.${today.getFullYear()}`;
+            document.getElementById('letter-date-display').textContent = `Berlin, ${dateStr}`;
+
+            // Subject
+            document.getElementById('letter-subject-display').innerHTML = subject ? `<strong>${subject}</strong>` : '';
+
+            // Greeting
+            const greeting = contact ? `Sehr geehrte/r ${contact},` : 'Sehr geehrte Damen und Herren,';
+            document.getElementById('letter-greeting-display').textContent = greeting;
+
+            // Content
+            let contentHTML = '';
+            if (intro) contentHTML += `<p>${intro.replace(/\n/g, '<br><br>')}</p>`;
+            if (body) contentHTML += `<p>${body.replace(/\n/g, '<br><br>')}</p>`;
+            document.getElementById('letter-content-display').innerHTML = contentHTML;
+
+            // Closing
+            document.getElementById('letter-closing-display').innerHTML = conclusion.replace(/\n/g, '<br>');
+
+            // Signature
+            document.getElementById('letter-signature-display').innerHTML = `<br><br>${name}`;
+        }
+
+        function updateAllPreviews() {
+            updateDeckblatt();
+            updateLebenslauf();
+            updateMotivation();
+        }
+
+        function attachListeners() {
+            document.querySelectorAll('input, textarea, select').forEach(input => {
+                input.removeEventListener('input', updateAllPreviews);
+                input.addEventListener('input', updateAllPreviews);
+            });
+        }
+
+        // Download All PDFs
+        async function downloadAllPDF() {
+            const name = document.getElementById('deck-name').value.replace(/\s+/g, '_') || 'Bewerbung';
+            
+            const opt = {
+                margin: 0,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Download Deckblatt
+            await html2pdf().set({...opt, filename: `${name}_Deckblatt.pdf`})
+                .from(document.getElementById('preview-deckblatt')).save();
+
+            // Wait a bit
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Download Lebenslauf
+            await html2pdf().set({...opt, filename: `${name}_Lebenslauf.pdf`})
+                .from(document.getElementById('preview-lebenslauf')).save();
+
+            // Wait a bit
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Download Anschreiben
+            await html2pdf().set({...opt, filename: `${name}_Anschreiben.pdf`})
+                .from(document.getElementById('preview-motivation')).save();
+        }
+
+        // Initialize
+        addExperience();
+        addEducation();
+        attachListeners();
+        updateAllPreviews();
+    </script>
+</body>
+</html>
